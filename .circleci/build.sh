@@ -5,7 +5,7 @@ cd kernel
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
 git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
-git clone --depth=1 https://github.com/STRIX-Project/AnyKernel3 AnyKernel
+git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F-%S")
