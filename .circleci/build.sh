@@ -2,9 +2,9 @@
 echo "Cloning dependencies"
 git clone --depth=1 https://github.com/xyz-mocha/kernel_xiaomi_sdm660 kernel -b eas
 cd kernel
-git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
-git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
-git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
+git clone --depth=1 https://gitlab.com/GhostMaster69-dev/cosmic-clang clang -b master
+git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
+git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -15,7 +15,7 @@ PATH="${KERNEL_DIR}/clang/bin:${KERNEL_DIR}/gcc/bin:${KERNEL_DIR}/gcc32/bin:${PA
 export KBUILD_COMPILER_STRING="$(${KERNEL_DIR}/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
 export ARCH=arm64
 export KBUILD_BUILD_HOST=circleci
-export KBUILD_BUILD_USER="Mocha"
+export KBUILD_BUILD_USER="xyz-mocha"
 # sticker plox
 function sticker() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
@@ -53,10 +53,14 @@ function finerr() {
 function compile() {
     make O=out ARCH=arm64 tulip_defconfig
     make -j$(nproc --all) O=out \
-                    ARCH=arm64 \
-                    CC=clang \
-                    CROSS_COMPILE=aarch64-linux-gnu- \
-                    CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+                      ARCH=arm64 \
+                      CC=clang \
+                      CROSS_COMPILE=aarch64-linux-gnu- \
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+                      AR=llvm-ar \
+                      NM=llvm-nm \
+                      OBJDUMP=llvm-objdump \
+                      STRIP=llvm-strip
 
     if ! [ -a "$IMAGE" ]; then
         finerr
@@ -67,7 +71,7 @@ function compile() {
 # Zipping
 function zipping() {
     cd AnyKernel || exit 1
-    zip -r9 Pitron-kernel×tulip-${TANGGAL}.zip *
+    zip -r9 Pitron-Kernel-${TANGGAL}.zip *
     cd ..
 }
 sticker
@@ -77,3 +81,4 @@ zipping
 END=$(date +"%s")
 DIFF=$(($END - $START))
 push
+
