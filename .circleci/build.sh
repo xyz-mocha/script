@@ -2,9 +2,9 @@
 echo "Cloning dependencies"
 git clone --depth=1 https://github.com/non-pixel/kernel_xiaomi_sdm660 kernel -b eas
 cd kernel
-git clone --depth=1 https://gitlab.com/GhostMaster69-dev/cosmic-clang clang -b master
-git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
-git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
+git clone --depth=1 https://github.com/kdrag0n/proton-clang clang -b master
+git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
+git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -56,11 +56,7 @@ function compile() {
                       ARCH=arm64 \
                       CC=clang \
                       CROSS_COMPILE=aarch64-linux-gnu- \
-                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-                      AR=llvm-ar \
-                      NM=llvm-nm \
-                      OBJDUMP=llvm-objdump \
-                      STRIP=llvm-strip
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
     if ! [ -a "$IMAGE" ]; then
         finerr
