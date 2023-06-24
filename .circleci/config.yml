@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   compile:
    docker:
-      - image: panchajanya1999/archlinux:latest
+      - image: fadlyas/kernel_dockerfile:latest
    steps:
       - run:
           command: |
