@@ -1,5 +1,5 @@
 jobs:
-  compile:
+ kernel-build:
     runs-on: ubuntu-latest
     container:
       image: panchajanya1999/archlinux:latest
