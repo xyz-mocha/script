@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
   compile:
-   ubuntu:
-      - image: z3zens/ubuntu:latest
+   docker:
+      - image: z4nyx/docker:latest
    steps:
       - run:
           command: |
