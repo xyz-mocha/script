@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
   compile:
-   docker:
-      - image: fadlyas/kernel_dockerfile:latest
+   ubuntu:
+      - image: z3zens/ubuntu:latest
    steps:
       - run:
           command: |
