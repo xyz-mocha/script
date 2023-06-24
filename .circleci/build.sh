@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/non-pixel/kernel_xiaomi_sdm660 kernel -b eas
 cd kernel
-git clone --depth=1 https://gitlab.com/varunhardgamer/trb_clang clang -b 17
+git clone --depth=1 https://gitlab.com/varunhardgamer/trb_clang clang -b 16
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
 git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
