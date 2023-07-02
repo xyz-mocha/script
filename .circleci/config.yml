@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   compile:
    docker:
-      - image: 31482281/ubuntu:latest
+      - image: z3zens/ubuntu:latest
    steps:
       - run:
           command: |
