@@ -3,8 +3,8 @@ echo "Cloning dependencies"
 git clone https://github.com/xyz-mocha/kernel_xiaomi_sdm660 kernel -b eas
 cd kernel
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
-git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
-git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
+git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
+git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
