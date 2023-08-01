@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm660 kernel -b arrow-13.1-tulip
 cd kernel
-git clone --depth=1 https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6207600 clang
+git clone --depth=1 https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6207600 clang -b 10.0
 git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
 git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
