@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 echo "Cloning dependencies"
-git clone https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm660 kernel -b arrow-13.1-tulip
+git clone https://github.com/non-pixel/xyz-work kernel -b kernel
 cd kernel
 git clone --depth=1 https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6207600 clang -b 10.0
+git clone --depth=1 https://github.com/sohamxda7/llvm-stable clang
 git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
 git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
-git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F-%S")
@@ -55,8 +55,9 @@ function compile() {
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
                     CC=clang \
-                    CROSS_COMPILE=aarch64-linux-gnu- \
-                    CROSS_COMPILE_ARM32=arm-linux-gnueabi-                   
+                    CLANG_TRIPLE=aarch64-linux-gnu- \
+                    CROSS_COMPILE=aarch64-linux-android- \
+                    CROSS_COMPILE_ARM32=arm-linux-androideabi-                   
 
     if ! [ -a "$IMAGE" ]; then
         finerr
