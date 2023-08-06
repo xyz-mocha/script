@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/non-pixel/xyz-work kernel -b kernel
 cd kernel
-git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
+git clone --depth=1 https://github.com/sohamxda7/llvm-stable clang
 git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
 git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
@@ -55,8 +55,9 @@ function compile() {
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
                     CC=clang \
-                    CROSS_COMPILE=aarch64-linux-gnu- \
-                    CROSS_COMPILE_ARM32=arm-linux-gnueabi-                      
+                    CLANG_TRIPLE=aarch64-linux-gnu- \
+                    CROSS_COMPILE=aarch64-linux-android- \
+                    CROSS_COMPILE_ARM32=arm-linux-androideabi-                      
 
     if ! [ -a "$IMAGE" ]; then
         finerr
