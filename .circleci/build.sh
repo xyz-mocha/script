@@ -3,8 +3,8 @@ echo "Cloning dependencies"
 git clone https://github.com/pix106/android_kernel_xiaomi_southwest-4.19 kernel -b main-test-dynamic
 cd kernel
 git clone --depth=1 https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b clang -b main
-git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
-git clone https://github.com/sohamxda7/llvm-stable -b gcc32  --depth=1 gcc32
+git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
+git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
 echo "Done"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
