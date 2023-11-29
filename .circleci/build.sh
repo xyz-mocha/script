@@ -60,7 +60,7 @@ function compile() {
                     CROSS_COMPILE_ARM32=arm-linux-androideabi-
 
     if ! [ -a "$IMAGE" ]; then
-        finerr
+        push "error.log" "Build Throws Errors"
         exit 1
     fi
     cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
@@ -78,4 +78,5 @@ zipping
 END=$(date +"%s")
 DIFF=$(($END - $START))
 push
+
 
