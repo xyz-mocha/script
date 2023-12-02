@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Cloning dependencies"
-git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b 4.19
+git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b test
 cd kernel
 git clone --depth=1 https://github.com/sohamxda7/llvm-stable clang
 git clone https://github.com/sohamxda7/llvm-stable -b gcc64 --depth=1 gcc
