@@ -51,7 +51,7 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-    make O=out ARCH=arm64 vendor/xiaomi/tulip_defconfig
+    make O=out ARCH=arm64 vendor/xiaomi/tulip_defconfig arch/arm64/configs/vendor/debugfs.config
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
                     CC=clang \
