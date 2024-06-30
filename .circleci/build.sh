@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Cloning dependencies"
-git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b xt
+git clone https://github.com/liliumproject/kernel_xiaomi_vayre kernel 
 cd kernel
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
