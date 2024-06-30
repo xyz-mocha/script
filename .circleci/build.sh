@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Cloning dependencies"
-git clone https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm660 kernel -b arrow-13.1-tulip
+git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b xt
 cd kernel
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
@@ -51,7 +51,7 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-    make O=out ARCH=arm64 tulip_defconfig
+    make O=out ARCH=arm64 vendor/xiaomi/tulip_defconfig
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
                     CC=clang \
