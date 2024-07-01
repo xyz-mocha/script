@@ -2,6 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b xx
 cd kernel
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/ -b master
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
 git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
@@ -56,7 +57,9 @@ function compile() {
                     ARCH=arm64 \
                     CC=clang \
                     CROSS_COMPILE=aarch64-linux-gnu- \
-                    CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+                    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+                    LLVM=1 \
+                    LLVM_IAS=1
 
     if ! [ -a "$IMAGE" ]; then
         push "error.log" "Build Throws Errors"
