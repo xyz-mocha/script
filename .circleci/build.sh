@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/tulip-org/kernel_xiaomi_sdm660 kernel -b xx
 cd kernel
-git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b master
+git clone --depth=1 https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang -b master
 git clone --depth=1 https://github.com/chips-project/aarch64-elf gcc64
 git clone --depth=1 https://github.com/chips-project/arm-eabi gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
