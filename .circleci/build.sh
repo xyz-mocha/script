@@ -16,12 +16,6 @@ export KBUILD_COMPILER_STRING="$(${KERNEL_DIR}/clang/bin/clang --version | head 
 export ARCH=arm64
 export KBUILD_BUILD_HOST=circleci
 export KBUILD_BUILD_USER="mocha"
-# sticker plox
-function sticker() {
-    curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
-        -d sticker="CAACAgEAAxkBAAEnKnJfZOFzBnwC3cPwiirjZdgTMBMLRAACugEAAkVfBy-aN927wS5blhsE" \
-        -d chat_id=$chat_id
-}
 # Send info plox channel
 function sendinfo() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
@@ -40,12 +34,18 @@ function push() {
         -F "parse_mode=html" \
         -F caption="Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s). | For <b>Xiaomi Redmi Note 6 Pro (tulip)</b> | <b>$(${GCC}gcc --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</b>"
 }
+# sticker plox
+function sticker() {
+    curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
+        -d sticker="CAACAgEAAxkBAAEnKnJfZOFzBnwC3cPwiirjZdgTMBMLRAACugEAAkVfBy-aN927wS5blhsE" \
+        -d chat_id=$chat_id
+}
 # Stiker Error
 function stikerr() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
         -d sticker="CAACAgUAAxkBAAMQXvdgEdkCuvPzzQeXML3J6srMN4gAAvIAA3PMoVfqdoREJO6DahoE" \
         -d chat_id=$chat_id
-	}
+}
 # Fin Error
 function finerr() {
         paste
