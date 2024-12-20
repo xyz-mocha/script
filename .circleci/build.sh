@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 git clone https://github.com/xyz-mocha/kernel kernel -b xs
 cd kernel
-git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang -b main
+git clone --depth=1 https://github.com/kdrag0n/proton-clang clang -b master
 git clone https://github.com/chips-project/aarch64-elf --depth=1 gcc
 git clone --depth=1 https://github.com/chips-project/arm-eabi --depth=1 gcc32
 git clone --depth=1 https://github.com/xyz-mocha/AnyKernel3 AnyKernel
@@ -64,7 +64,7 @@ function compile() {
                     CC=clang \
                     CROSS_COMPILE=aarch64-linux-gnu- \
                     CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-
+		      
     if ! [ -a "$IMAGE" ]; then
         finerr
         stikerr
